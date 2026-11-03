@@ -59,6 +59,7 @@ const paths: Record<string, ReactNode> = {
     </>
   ),
   close: <path d="m6 6 12 12M18 6 6 18" />,
+  menu: <path d="M4 7h16M4 12h16M4 17h16" />,
   spark: (
     <>
       <path d="m12 3 1.7 5.3L19 10l-5.3 1.7L12 17l-1.7-5.3L5 10l5.3-1.7L12 3Z" />

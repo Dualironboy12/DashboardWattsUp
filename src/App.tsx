@@ -10,18 +10,19 @@ import { VerifyScreen } from '@/screens/VerifyScreen'
 
 export default function App() {
   const [screen, setScreen] = useState<ScreenId>('evaluate')
+  const [navOpen, setNavOpen] = useState(true)
   const [assistantOpen, setAssistantOpen] = useState(false)
   const [assumptions, setAssumptions] = useState<Assumptions>(BASE_ASSUMPTIONS)
 
   return (
-    <div className="app-shell">
-      <Sidebar screen={screen} onChange={setScreen} />
+    <div className={navOpen ? 'app-shell' : 'app-shell nav-collapsed'}>
+      <Sidebar screen={screen} onChange={setScreen} open={navOpen} />
       <div className="workspace">
         <div className="demo-banner">
           <span>Datos de demostración</span>
           <p>Las cifras son ilustrativas y no representan una cotización.</p>
         </div>
-        <Header screen={screen} />
+        <Header screen={screen} navOpen={navOpen} onToggleNav={() => setNavOpen(open => !open)} />
         <main>
           {screen === 'evaluate' ? <EvaluateScreen /> : null}
           {screen === 'receipts' ? <ReceiptsScreen /> : null}
